@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "default.md",
+                "file": "TaptapWork/20221027直播2.3TODO.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "default.md",
+                "file": "TaptapWork/20221027直播2.3TODO.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "default.md",
+                "file": "TaptapWork/20221027直播2.3TODO.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "default.md"
+                "file": "TaptapWork/20221027直播2.3TODO.md"
               }
             }
           }
@@ -140,5 +140,9 @@
     "mostRecentAction": ""
   },
   "active": "ef363287496ee64c",
-  "lastOpenFiles": []
+  "lastOpenFiles": [
+    "TaptapWork/20221025直播BUG修复.md",
+    "README.md",
+    "default.md"
+  ]
 }
