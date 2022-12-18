@@ -1,4 +1,5 @@
 require_relative '../utils/config'
+require_relative '../utils/database'
 
 namespace "note" do
   desc "note: create note."
@@ -32,7 +33,7 @@ title: #{filename}
 date: #{time}
 categories: 未定义
 layout: post
-location: null
+location: nil
 author: #{userconfig[:username]}
 email: #{userconfig[:email]}
 ---
@@ -40,8 +41,32 @@ email: #{userconfig[:email]}
     File.open("./_notes/#{dirname}/#{output_filename}.md", 'w') do |f|
       f << temple
     end
-  
+    
+    DB[hash_id] = {
+      id: hash_id,
+      title: filename,
+      date: time,
+      categories: "未定义",
+      layout: "post",
+      location: nil,
+      author: userconfig[:username],
+      email: userconfig[:email],
+    }
+
     puts "[create note] #{output_filename}"
+  end
+
+  desc "note:list note."
+  task :list do |t|
+    require 'terminal-table'
+    note_ids = DB.keys
+    rows = []
+    note_ids.each do |note_id|
+      note = DB[note_id]
+      rows << [note[:id][..8], note[:date], note[:title]]
+    end
+    table = Terminal::Table.new :headings => ['Id', 'Date', 'Title'], :rows => rows
+    puts table
   end
 
   desc "note:search note."
