@@ -2,7 +2,7 @@ require 'yaml'
 require_relative '../config/const'
 class Config
   def initialize
-    @user_config_path = ConfigConst::Path::UserInfo
+    @user_config_path = ConfigConst::Path::UserSetting
   end
 
   def userconfig(new_hash = nil)

@@ -1,5 +1,5 @@
 module ConfigConst
   module Path
-    UserInfo = './.kernel/config/user_info.yml'
+    UserSetting = './.kernel/config/user_setting.yml'
   end
 end
