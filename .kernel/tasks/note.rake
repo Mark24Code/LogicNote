@@ -31,6 +31,7 @@ namespace "note" do
 id: #{hash_id}
 title: #{filename}
 date: #{time}
+book: #{dirname}
 categories: 未定义
 layout: post
 location: nil
@@ -46,6 +47,7 @@ email: #{userconfig[:email]}
       id: hash_id,
       title: filename,
       date: time,
+      book: dirname,
       categories: "未定义",
       layout: "post",
       location: nil,
@@ -63,9 +65,9 @@ email: #{userconfig[:email]}
     rows = []
     note_ids.each do |note_id|
       note = DB[note_id]
-      rows << [note[:id][..8], note[:date], note[:title]]
+      rows << [note[:id][..8], note[:date],note[:book],note[:title]]
     end
-    table = Terminal::Table.new :headings => ['Id', 'Date', 'Title'], :rows => rows
+    table = Terminal::Table.new :headings => ['Id', 'Date','Book','Title'], :rows => rows
     puts table
   end
 
