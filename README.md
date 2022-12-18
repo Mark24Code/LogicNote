@@ -20,5 +20,5 @@
 
 ## 约定
 
-# .kernel/ ruby内核脚本 
+# .core/ ruby内核脚本 
 # notes/ 笔记的存储之处
