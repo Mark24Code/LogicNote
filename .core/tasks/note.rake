@@ -67,19 +67,27 @@ email: #{userconfig[:email]}
       note = DB[note_id]
       rows << [note[:id][..8], note[:date],note[:book],note[:title]]
     end
+    puts "total: #{note_ids.length}"
     table = Terminal::Table.new :headings => ['Id', 'Date','Book','Title'], :rows => rows
     puts table
+    puts "total: #{note_ids.length}"
+    # TODO
+    # 分页展示，更改交互，到 less
   end
 
   desc "note:search note."
   task :search do
     puts "search"
-    # Build the main program
+    # TODO
+    # 收集在索引标题中的模糊查找
+    # 全文搜索摘要前10
   end
 
   desc "note:delete note."
   task :delete do
     puts "delete"
-    # Build the main program
+    # TODO
+    # 移动到 Trash,更新信息，一切统计绕过 Trash，Trash可以还原
+    # Purge 是清除 一个笔记
   end
 end
