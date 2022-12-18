@@ -72,7 +72,8 @@ email: #{userconfig[:email]}
     puts table
     puts "total: #{note_ids.length}"
     # TODO
-    # 分页展示，更改交互，到 less
+    # 分页展示，更改交互，到 less，突然明白 git 为什么要进入滚动模式了
+    # 也许我们也应该进入滚动模式
   end
 
   desc "note:search note."
