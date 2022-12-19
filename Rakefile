@@ -1,4 +1,4 @@
-Rake.add_rakelib './core/tasks'
+Rake.add_rakelib './_core/tasks'
 
 task default: %w[task_list]
 

@@ -20,7 +20,7 @@
 
 ## 约定
 
-# core/ ruby内核脚本 
+# _core/ ruby内核脚本 
 # notes/ 笔记的存储之处
 
 
