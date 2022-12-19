@@ -34,7 +34,7 @@ date: #{time}
 book: #{dirname}
 categories: 未定义
 layout: post
-location: nil
+location: null
 author: #{userconfig[:username]}
 email: #{userconfig[:email]}
 ---
