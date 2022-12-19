@@ -30,3 +30,16 @@
 
 * markdown前端：
   * Vscode插件：GitHub Markdown Preview
+
+
+## 命令
+
+```
+rake config:email[email]        # email: get/set email
+rake config:username[username]  # name: get/set username
+rake note:delete                # note:delete note
+rake note:list                  # note:list note
+rake note:new[notename]         # note: create note
+rake note:search                # note:search note
+rake task_list                  # list all tasks
+```
