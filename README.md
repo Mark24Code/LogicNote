@@ -1,39 +1,48 @@
-# Mark24Note
+# LogicNote
 
-## Logic NoteBook
+## 一、概念：逻辑软件：
 
-逻辑笔记本
-
-不借助软件开发，但是使用 markdown 作为一种约定的数据结构。
-
-* 存储：文件系统、github、git
-* 预览：vscode、sublime 预览 markdown； 浏览器预览html
-* 读写：文件系统，基于markdown
-* 搜索：vscode、sublime 基于本地检索
-* 额外功能：Ruby Rake 辅助
-  * 同步： git
-  * 剪藏：ruby爬虫获得页面
-  * 构建：ruby把页面构建成 html
-  * 压缩：归档
-  * 分析索引
+一个新概念。不建造过多的轮子，使用数据结构，把多个软件的部分串起来，逻辑上形成一个可用的软件。
 
 
-## 约定
+## 二、软件的基本要素
 
-# _core/ ruby内核脚本 
-# notes/ 笔记的存储之处
+* 抽象数据结构
+* 前端输入
+* 前端呈现
+* 后端数据处理
+* 数据存储
+* 周边自动化服务
+  * 账号系统
+  * 同步
+  * 版本管理
+  * 其他自动化功能
 
+## 三、一个逻辑笔记软件
 
-## 具体落地
+* 抽象数据结构
+  * 【使用】 Github Markdown(Markdown + Mermaid)
+* 前端输入
+  * 【使用】Vscode 编辑器
+* 前端呈现
+  * 【使用】Vscode 插件：[github-markdown-preview](https://marketplace.visualstudio.com/items?itemName=bierner.github-markdown-preview)
+* 后端数据处理
+  * 【使用】Ruby Rake 脚本
+* 数据存储
+  * 【使用】远程 选择 Github 仓库的存储能力
+  * 【使用】本地 选择操作系统下文件系统，使用 Ruby 标准库操作，把文件系统当作数据库来使用
+* 周边自动化服务
+  * 账号系统
+    * 【使用】使用 Git 仓库能力
+  * 同步
+    * 【使用】使用 Git 仓库推送
+  * 版本管理
+    * 【使用】git 的能力
+  * 其他自动化功能
+    * 【使用】Ruby Rake 脚本，串联所有的自动化部分
 
-* 存储： github
-
-* markdown前端：
-  * Vscode插件：GitHub Markdown Preview
-
-
-## 命令
-
+  
+## Ruby Rake
 ```
 rake config:email[email]        # email: get/set email
 rake config:username[username]  # name: get/set username
