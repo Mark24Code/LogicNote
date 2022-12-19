@@ -22,3 +22,11 @@
 
 # .core/ ruby内核脚本 
 # notes/ 笔记的存储之处
+
+
+## 具体落地
+
+* 存储： github
+
+* markdown前端：
+  * Vscode插件：GitHub Markdown Preview
