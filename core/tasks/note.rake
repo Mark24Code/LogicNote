@@ -18,7 +18,7 @@ namespace "note" do
     require 'fileutils'
     dirname = File.dirname(notename)
     unless File.directory?(dirname)
-      FileUtils.mkdir_p("./_notes/#{dirname}")
+      FileUtils.mkdir_p("#{userconfig[:notes_dir]}/#{dirname}")
     end
 
     date = Time.now.strftime("%Y-%m-%d")
@@ -39,7 +39,7 @@ author: #{userconfig[:username]}
 email: #{userconfig[:email]}
 ---
   "
-    File.open("./_notes/#{dirname}/#{output_filename}.md", 'w') do |f|
+    File.open("#{userconfig[:notes_dir]}/#{dirname}/#{output_filename}.md", 'w') do |f|
       f << temple
     end
     

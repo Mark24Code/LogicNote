@@ -3,3 +3,4 @@
 
 :hash_id_length: 6
 :default_notebook_name: 默认
+:notes_dir: './_notes'
