@@ -82,4 +82,24 @@ book: #{dirname}
     # 移动到 Trash,更新信息，一切统计绕过 Trash，Trash可以还原
     # Purge 是清除 一个笔记
   end
+
+  desc "note:purge note."
+  task :purge do
+    puts "[note purge] delete all"
+    puts "Are you sure delete all notes? (Yes/No)"
+    result = STDIN.gets
+    result = result.strip
+    if result == 'Yes'
+      userconfig = Config.new.userconfig
+      system("rm -rf #{userconfig[:notes_dir]}")
+      system("mkdir #{userconfig[:notes_dir]}")
+      system("touch #{userconfig[:notes_dir]}/.keep")
+      system("rm -rf #{ConfigConst::Path::Database}")
+      system("mkdir #{ConfigConst::Path::Database}")
+      system("touch #{ConfigConst::Path::Database}/.keep")
+    else
+      puts "[note purge] cancel."
+    end
+
+  end
 end
