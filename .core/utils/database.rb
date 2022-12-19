@@ -1,4 +1,4 @@
-require 'yaml/dbm'
+require "pstore"
 require_relative '../config/const'
 
-DB = YAML::DBM.new(ConfigConst::Path::Database)
+DB = PStore.new(ConfigConst::Path::Database)

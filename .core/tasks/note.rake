@@ -43,30 +43,35 @@ email: #{userconfig[:email]}
       f << temple
     end
     
-    DB[hash_id] = {
-      id: hash_id,
-      title: filename,
-      date: time,
-      book: dirname,
-      categories: "未定义",
-      layout: "post",
-      location: nil,
-      author: userconfig[:username],
-      email: userconfig[:email],
-    }
-
+    DB.transaction do
+      DB[hash_id] = {
+        id: hash_id,
+        title: filename,
+        date: time,
+        book: dirname,
+        categories: "未定义",
+        layout: "post",
+        location: nil,
+        author: userconfig[:username],
+        email: userconfig[:email],
+      }
+    end
     puts "[create note] #{output_filename}"
   end
 
   desc "note:list note."
   task :list do |t|
     require 'terminal-table'
-    note_ids = DB.keys
+    note_ids = []
     rows = []
-    note_ids.each do |note_id|
-      note = DB[note_id]
-      rows << [note[:id][..8], note[:date],note[:book],note[:title]]
+    DB.transaction do
+      note_ids = DB.roots
+      note_ids.each do |note_id|
+        note = DB[note_id]
+        rows << [note[:id][..8], note[:date],note[:book],note[:title]]
+      end
     end
+    
     puts "total: #{note_ids.length}"
     table = Terminal::Table.new :headings => ['Id', 'Date','Book','Title'], :rows => rows
     puts table
