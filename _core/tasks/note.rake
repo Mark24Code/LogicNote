@@ -25,37 +25,25 @@ namespace "note" do
     time = Time.now.strftime("%Y-%m-%d %H:%M:%S %z")
     note_time_name = "#{time} #{notename}"
     require 'digest'
-    hash_id = Digest::MD5.hexdigest(note_time_name)
-    output_filename = "#{date}.#{filename}.#{hash_id[..userconfig[:hash_id_length]]}"
+    object_id = Digest::MD5.hexdigest(note_time_name)
+    output_filename = "#{date}.#{filename}.#{object_id[..userconfig[:object_id_length]]}"
     temple = "---
-id: #{hash_id}
+id: #{object_id}
 title: #{filename}
 date: #{time}
 book: #{dirname}
-categories: 未定义
-layout: post
-location: null
-author: #{userconfig[:username]}
-email: #{userconfig[:email]}
 ---
   "
     File.open("#{userconfig[:notes_dir]}/#{dirname}/#{output_filename}.md", 'w') do |f|
       f << temple
     end
     
-    DB.transaction do
-      DB[hash_id] = {
-        id: hash_id,
-        title: filename,
-        date: time,
-        book: dirname,
-        categories: "未定义",
-        layout: "post",
-        location: nil,
-        author: userconfig[:username],
-        email: userconfig[:email],
-      }
-    end
+    DB.save(object_id, {
+      id: object_id,
+      title: filename,
+      date: time,
+      book: dirname,
+    })
     puts "[create note] #{output_filename}"
   end
 
@@ -64,14 +52,12 @@ email: #{userconfig[:email]}
     require 'terminal-table'
     note_ids = []
     rows = []
-    DB.transaction do
-      note_ids = DB.roots
-      note_ids.each do |note_id|
-        note = DB[note_id]
-        rows << [note[:id][..8], note[:date],note[:book],note[:title]]
-      end
+    notes_meta_info = DB.all
+    note_ids = notes_meta_info.keys
+    note_ids.each do |note_id|
+      note = notes_meta_info[note_id]
+      rows << [note[:id][..8], note[:date],note[:book],note[:title]]
     end
-    
     puts "total: #{note_ids.length}"
     table = Terminal::Table.new :headings => ['Id', 'Date','Book','Title'], :rows => rows
     puts table
